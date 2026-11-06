@@ -1,1 +1,25 @@
-{"name":"wayfarer","version":"1.0.0","private":true,"type":"module","engines":{"node":">=20.19"},"scripts":{"seed":"node server/seed.js","dev":"node server/index.js","start":"node server/index.js --production","build":"vite build","test":"node --test tests/*.test.js"},"dependencies":{"better-sqlite3":"^11.10.0","express":"^5.1.0","react":"^19.1.0","react-dom":"^19.1.0"},"devDependencies":{"vite":"^6.4.1"}}
+{
+  "name": "wayfarer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "seed": "node server/seed.js",
+    "dev": "node server/index.js",
+    "start": "node server/index.js --production",
+    "build": "vite build",
+    "test": "node --test tests/*.test.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.1"
+  }
+}

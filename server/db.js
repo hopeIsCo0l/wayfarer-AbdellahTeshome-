@@ -1,12 +1,13 @@
-import Database from 'better-sqlite3';
-import { mkdirSync } from 'node:fs';
-import { dirname, resolve } from 'node:path';
-export function openDatabase(filename = resolve('data/wayfarer.sqlite')) {
-  if (filename !== ':memory:') mkdirSync(dirname(filename), { recursive: true });
+import Database from "better-sqlite3";
+import { mkdirSync } from "node:fs";
+import { dirname, resolve } from "node:path";
+export function openDatabase(filename = resolve("data/wayfarer.sqlite")) {
+  if (filename !== ":memory:")
+    mkdirSync(dirname(filename), { recursive: true });
   const db = new Database(filename);
-  db.pragma('foreign_keys = ON');
-  db.pragma('journal_mode = WAL');
-  db.pragma('busy_timeout = 5000');
+  db.pragma("foreign_keys = ON");
+  db.pragma("journal_mode = WAL");
+  db.pragma("busy_timeout = 5000");
   return db;
 }
 export function migrate(db) {

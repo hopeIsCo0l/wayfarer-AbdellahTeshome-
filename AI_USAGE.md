@@ -1,0 +1,11 @@
+# AI usage
+
+This implementation was produced with OpenAI Codex in collaboration with the requester. Codex wrote the React UI, Express endpoints, SQLite schema and seed data, ranking formula, transactional booking service, tests and documentation. It used terminal commands for dependency installation, Git commits, tests and builds, and the browser tool for visual and interaction checks. Prettier formatted the source. No other coding assistant or subagent was used.
+
+Representative prompts from the conversation were “okay lets do it,” after the requester supplied the full A–D requirements, and the explicit request for a ranking unit test plus “an automated concurrency test that fires multiple booking requests simultaneously at a nearly full tour slot.” The implementation turned these into a weighted score test and actual parallel HTTP requests distributed across four Node processes sharing one database, rather than just sequential service calls.
+
+One initial generated implementation had a mismatch between the seat selector and request: the selector clamped its displayed quantity when remaining capacity decreased, but the booking handler still sent the old value. During source review, Codex found the difference and changed the request to use the same bounded quantity. This protects consistency in the UI; the server independently rejects excess seats. The first browser-tool attempt to change viewport also referred to an undefined browser handle; Codex obtained the documented browser binding and continued desktop checks.
+
+Verification performed by Codex: `npm test` and `npm run build`; browser checks for booking confirmation, review creation and update without an extra review, user switching, category filtering, and the desktop layout. The tests cover the SQL ranking against the pure formula, review uniqueness, invalid input, concurrent last-seat and multi-seat requests, duplicate retries, and direct database guard violations. SQLite transaction and trigger behavior was checked against official documentation linked in DECISIONS.md.
+
+These are agent-performed checks, not a claim of independent human review. Before submitting, the requester should run the app and tests, inspect the implementation, and be comfortable explaining the ranking prior, transaction boundaries, and limitations.
